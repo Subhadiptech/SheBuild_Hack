@@ -20,7 +20,6 @@ class SplashFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -34,7 +33,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         GlobalScope.launch(Dispatchers.Main) {
-            delay(2400)
+            delay(3000)
             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
         }
 
