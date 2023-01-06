@@ -39,13 +39,13 @@ class NGOAdapter @Inject constructor() :
 
     inner class NGOViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //view init here
-        val Ntitle: TextView = itemView.findViewById(R.id.campaigns_title)
-        val Ndesc: TextView = itemView.findViewById(R.id.campaigns_description)
+        val title: TextView = itemView.findViewById(R.id.campaigns_title)
+        val desc: TextView = itemView.findViewById(R.id.campaigns_description)
         val link: TextView = itemView.findViewById(R.id.read_more)
         fun bindData(item: NGOModel) {
             //binding here
-            Ntitle.text = item.title
-            Ndesc.text = item.desc
+            title.text = item.title
+            desc.text = item.desc
             //intent to click read more
             link.setOnClickListener {
                 //todo:intent to read more browser

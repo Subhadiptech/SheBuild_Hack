@@ -3,6 +3,7 @@ package com.ersubhadip.presenter.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +31,6 @@ class StoryAdapter @Inject constructor() :
         }
 
         override fun areContentsTheSame(oldItem: StoryModel, newItem: StoryModel): Boolean {
-
             return oldItem == newItem
         }
 
@@ -38,11 +38,17 @@ class StoryAdapter @Inject constructor() :
 
     inner class StoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //view init here
+        val title: TextView = itemView.findViewById(R.id.story_title)
+        val tag1: TextView = itemView.findViewById(R.id.tag_1)
+        val tag2: TextView = itemView.findViewById(R.id.tag_2)
+        val desc: TextView = itemView.findViewById(R.id.story_description)
 
         fun bindData(item: StoryModel) {
             //binding here
-
-            //intent to click read more
+            title.text = item.storyTitle
+            desc.text = item.storyDesc
+            tag1.text = item.storyTags[0]
+            tag2.text = item.storyTags[1]
 
         }
     }

@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:text="Story Title"
             android:fontFamily="@font/source_sans_pro"
+            android:text="Story Title"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,15 +27,13 @@
 
         <TextView
             android:id="@+id/story_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/source_sans_pro"
             android:layout_marginTop="2dp"
+            android:fontFamily="@font/source_sans_pro"
             android:paddingHorizontal="8dp"
             android:text="Description  of the story ..."
             android:textColor="@color/text_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/story_title" />
 
         <LinearLayout
@@ -53,10 +51,11 @@
                 app:cardCornerRadius="80dp">
 
                 <TextView
+                    android:id="@+id/tag_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="4dp"
                     android:fontFamily="@font/source_sans_pro"
+                    android:paddingHorizontal="4dp"
                     android:text="Women"
                     android:textSize="10sp" />
 
@@ -69,27 +68,12 @@
                 app:cardCornerRadius="80dp">
 
                 <TextView
+                    android:id="@+id/tag_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="4dp"
                     android:fontFamily="@font/source_sans_pro"
+                    android:paddingHorizontal="4dp"
                     android:text="Safety"
-                    android:textSize="10sp" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                app:cardCornerRadius="80dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="4dp"
-                    android:text="Trafficking"
-                    android:fontFamily="@font/source_sans_pro"
                     android:textSize="10sp" />
 
             </androidx.cardview.widget.CardView>

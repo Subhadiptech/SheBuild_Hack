@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/aleo"
             android:text="Hello, User"
             android:textColor="@color/white"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -50,9 +50,10 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/add_stories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/primary_pink"
+                android:background="@color/primary_blue"
 
 
                 android:paddingHorizontal="12dp"
@@ -68,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="8dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -138,9 +139,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/blog_list"
             android:layout_width="match_parent"
+            tools:listitem="@layout/blog_item_layout"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -159,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="5dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -167,8 +169,8 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/source_sans_pro"
                 android:background="@drawable/edittext_bg"
+                android:fontFamily="@font/source_sans_pro"
                 android:hint="Enter your email address"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="6dp"
@@ -182,8 +184,8 @@
                 android:layout_marginStart="8dp"
                 android:background="@color/primary_pink"
                 android:clickable="true"
-                android:fontFamily="@font/source_sans_pro"
                 android:focusable="true"
+                android:fontFamily="@font/source_sans_pro"
                 android:foreground="?selectableItemBackground"
                 android:text="Subscribe"
                 android:textAllCaps="false"
@@ -195,9 +197,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
+            android:fontFamily="@font/source_sans_pro"
             android:text="@string/bottom_text"
             android:textAlignment="center"
-            android:fontFamily="@font/source_sans_pro"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -205,12 +207,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textStyle="italic"
             android:fontFamily="@font/source_sans_pro"
             android:text="Crafted By It_Doesn't_Matter"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="italic" />
 
     </LinearLayout>
 
