@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.domains.dto.adapterModels.NGOModel
 import com.ersubhadip.ww.R
+import javax.inject.Inject
 
-class NGOAdapter : ListAdapter<NGOModel, NGOAdapter.NGOViewHolder>(DiffUtilsCallback()) {
+class NGOAdapter @Inject constructor() :
+    ListAdapter<NGOModel, NGOAdapter.NGOViewHolder>(DiffUtilsCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NGOViewHolder {
         val view = LayoutInflater.from(parent.context)

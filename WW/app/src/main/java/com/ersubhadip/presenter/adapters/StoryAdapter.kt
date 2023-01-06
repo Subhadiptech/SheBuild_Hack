@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.domains.dto.adapterModels.StoryModel
 import com.ersubhadip.ww.R
+import javax.inject.Inject
 
-class StoryAdapter : ListAdapter<StoryModel, StoryAdapter.StoryViewHolder>(DiffUtilsCallback()) {
+class StoryAdapter @Inject constructor() :
+    ListAdapter<StoryModel, StoryAdapter.StoryViewHolder>(DiffUtilsCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
         val view = LayoutInflater.from(parent.context)

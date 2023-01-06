@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.domains.dto.adapterModels.BlogModel
 import com.ersubhadip.ww.R
+import javax.inject.Inject
 
-class BlogAdapter : ListAdapter<BlogModel, BlogAdapter.BlogViewHolder>(DiffUtilsCallback()) {
+class BlogAdapter @Inject constructor() :
+    ListAdapter<BlogModel, BlogAdapter.BlogViewHolder>(DiffUtilsCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlogViewHolder {
         val view = LayoutInflater.from(parent.context)

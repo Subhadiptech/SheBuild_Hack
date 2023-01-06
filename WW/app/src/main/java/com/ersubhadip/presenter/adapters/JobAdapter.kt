@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.domains.dto.adapterModels.JobModel
 import com.ersubhadip.ww.R
+import javax.inject.Inject
 
-class JobAdapter : ListAdapter<JobModel, JobAdapter.JobViewHolder>(DiffUtilsCallback()) {
+
+class JobAdapter @Inject constructor() :
+    ListAdapter<JobModel, JobAdapter.JobViewHolder>(DiffUtilsCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         val view = LayoutInflater.from(parent.context)
