@@ -3,6 +3,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_title_3">Top Blogs <font color="#03A9F4">#women #empowerment</font></string>
+    <string name="complain_1"><font color="#E21EE9">‘Women</font> can file complaint in any police station’</string>
     <string name="bottom_text"><font color="#E21EE9">Women</font> &amp; <font color="#03A9F4">World</font></string>
     <string name="explor_more"><u>Explore More</u></string>
 </resources>
