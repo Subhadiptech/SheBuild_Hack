@@ -85,12 +85,12 @@ class HomeFragment : Fragment() {
         binding.sosButton.setOnClickListener {
             val dialog: Dialog = Dialog(requireContext())
             val dBinding: SosDialogBinding = SosDialogBinding.inflate(layoutInflater)
-            if (storage.isNewUser()) {
-                dBinding.sendSos.visibility = View.GONE
-                dBinding.setEmergencyNumber.visibility = View.VISIBLE
-            } else {
+            if (storage.number.isNotEmpty()) {
                 dBinding.setEmergencyNumber.visibility = View.GONE
                 dBinding.sendSos.visibility = View.VISIBLE
+            } else {
+                dBinding.sendSos.visibility = View.GONE
+                dBinding.setEmergencyNumber.visibility = View.VISIBLE
             }
             dialog.apply {
                 setContentView(dBinding.root)
@@ -129,9 +129,8 @@ class HomeFragment : Fragment() {
 
             dBinding.exploreBtn.setOnClickListener {
                 dialog.dismiss()
-                findNavController().navigate(R.id.action_homeFragment_to_policeFragment)
+                findNavController().navigate(R.id.action_homeFragment_to_complainFragment2)
             }
-
 
         }
 
@@ -267,10 +266,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun sos() {
-
+//todo:sos
     }
 
-    fun isValidEmail(target: CharSequence?): Boolean {
+    private fun isValidEmail(target: CharSequence?): Boolean {
         return if (TextUtils.isEmpty(target)) {
             false
         } else {

@@ -56,6 +56,7 @@
                 android:fontFamily="@font/source_sans_pro"
                 android:hint="Enter Emergency Contact"
                 android:paddingHorizontal="6dp"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@color/black"
                 android:textSize="18sp"
