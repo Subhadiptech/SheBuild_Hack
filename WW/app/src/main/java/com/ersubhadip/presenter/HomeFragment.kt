@@ -1,9 +1,11 @@
 package com.ersubhadip.presenter
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -131,7 +133,6 @@ class HomeFragment : Fragment() {
             }
 
             dBinding.setEmergencyNumber.addTextChangedListener(object : TextWatcher {
-
                 override fun afterTextChanged(s: Editable) {
                     if (s.toString().isNotEmpty() && s.toString().length == 10) {
                         storage.number = s.toString()
@@ -338,6 +339,7 @@ class HomeFragment : Fragment() {
         bAdapter.submitList(bList)
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun sos() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
@@ -347,7 +349,16 @@ class HomeFragment : Fragment() {
         )
         sendIntent.type = "text/plain"
         sendIntent.setPackage("com.whatsapp")
-        startActivity(sendIntent)
+        sendIntent.putExtra("jid", "${storage.number}@s.whatsapp.net")
+        // Verify that the Intent will resolve to an activity
+        if (sendIntent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(sendIntent);
+        }
+
+        val callIntent = Intent(Intent.ACTION_CALL)
+        callIntent.data = Uri.parse("tel:1234567890")
+        startActivity(callIntent)
+
     }
 
     private fun isValidEmail(target: CharSequence?): Boolean {
