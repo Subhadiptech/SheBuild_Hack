@@ -90,4 +90,12 @@ class ExploreFragment : Fragment() {
     private fun manipulateList(list: ArrayList<ExploreModel>) {
         adapter.submitList(list)
     }
+
+    private fun fetchJobList() {
+
+    }
+
+    private fun fetchScList() {
+
+    }
 }
