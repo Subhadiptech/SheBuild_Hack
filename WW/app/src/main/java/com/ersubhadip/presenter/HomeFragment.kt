@@ -1,5 +1,6 @@
 package com.ersubhadip.presenter
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,21 +14,23 @@ import com.ersubhadip.domains.dto.adapterModels.BlogModel
 import com.ersubhadip.domains.dto.adapterModels.JobModel
 import com.ersubhadip.domains.dto.adapterModels.NGOModel
 import com.ersubhadip.domains.dto.adapterModels.StoryModel
+import com.ersubhadip.helpers.Storage
 import com.ersubhadip.presenter.adapters.BlogAdapter
 import com.ersubhadip.presenter.adapters.JobAdapter
 import com.ersubhadip.presenter.adapters.NGOAdapter
 import com.ersubhadip.presenter.adapters.StoryAdapter
 import com.ersubhadip.ww.R
 import com.ersubhadip.ww.databinding.FragmentHomeBinding
+import com.ersubhadip.ww.databinding.SosDialogBinding
 import com.ersubhadip.ww.databinding.StoriesSheetBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
+    private lateinit var storage: Storage
 
     private lateinit var binding: FragmentHomeBinding
     private var sList: ArrayList<StoryModel> = ArrayList()
@@ -58,6 +61,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        storage = Storage(requireContext())
         return binding.root
     }
 
@@ -73,6 +77,25 @@ class HomeFragment : Fragment() {
 
 
         //clicks
+        binding.sosButton.setOnClickListener {
+            val dialog: Dialog = Dialog(requireContext())
+            val dBinding: SosDialogBinding = SosDialogBinding.inflate(layoutInflater)
+            if (storage.isNewUser()) {
+                dBinding.sendSos.visibility = View.GONE
+                dBinding.setEmergencyNumber.visibility = View.VISIBLE
+            } else {
+                dBinding.setEmergencyNumber.visibility = View.GONE
+                dBinding.sendSos.visibility = View.VISIBLE
+            }
+            dialog.apply {
+                setContentView(dBinding.root)
+                setCancelable(true)
+                show()
+            }
+
+
+        }
+
         binding.exploreJobs.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_exploreFragment)
         }

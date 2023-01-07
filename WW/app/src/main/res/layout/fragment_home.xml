@@ -16,15 +16,32 @@
         android:paddingHorizontal="0dp"
         android:paddingBottom="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/aleo"
-            android:text="Hello, User"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/aleo"
+                android:text="Hello 👋🏻"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <ImageView
+                android:id="@+id/sos_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_sos" />
+
+        </LinearLayout>
+
 
         <View
             android:layout_width="match_parent"
@@ -139,10 +156,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/blog_list"
             android:layout_width="match_parent"
-            tools:listitem="@layout/blog_item_layout"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/blog_item_layout" />
 
         <TextView
             android:layout_width="match_parent"
