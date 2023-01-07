@@ -6,11 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.ersubhadip.domains.dto.adapterModels.ExploreModel
+import com.ersubhadip.presenter.adapters.ExploreAdapter
 import com.ersubhadip.ww.R
 import com.ersubhadip.ww.databinding.FragmentExploreBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ExploreFragment : Fragment() {
-    lateinit var binding: FragmentExploreBinding
+
+    @Inject
+    lateinit var adapter: ExploreAdapter
+
+    private var jList: ArrayList<ExploreModel> = ArrayList()
+    private var sList: ArrayList<ExploreModel> = ArrayList()
+
+    private lateinit var binding: FragmentExploreBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +56,7 @@ class ExploreFragment : Fragment() {
                 )
             )
             //todo:show data
+            manipulateList(jList)
 
         }
 
@@ -58,6 +73,21 @@ class ExploreFragment : Fragment() {
                     R.drawable.tab_filled
                 )
             )
+
+            //todo:show data
+            manipulateList(sList)
         }
+    }
+
+    private fun setVerticalList() {
+        binding.jobsList.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            adapter = adapter
+        }
+    }
+
+
+    private fun manipulateList(list: ArrayList<ExploreModel>) {
+        adapter.submitList(list)
     }
 }

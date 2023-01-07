@@ -57,5 +57,23 @@
 
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="@id/tabs"
+        app:layout_constraintStart_toStartOf="@id/tabs"
+        app:layout_constraintTop_toBottomOf="@id/tabs">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/jobs_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            tools:listitem="@layout/explore_item_layout" />
+
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
