@@ -1,6 +1,9 @@
 package com.ersubhadip.presenter
 
+import android.Manifest
 import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -10,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +22,7 @@ import com.ersubhadip.domains.dto.adapterModels.BlogModel
 import com.ersubhadip.domains.dto.adapterModels.JobModel
 import com.ersubhadip.domains.dto.adapterModels.NGOModel
 import com.ersubhadip.domains.dto.adapterModels.StoryModel
+import com.ersubhadip.helpers.LocationProvider
 import com.ersubhadip.helpers.Storage
 import com.ersubhadip.presenter.adapters.BlogAdapter
 import com.ersubhadip.presenter.adapters.JobAdapter
@@ -42,6 +47,7 @@ class HomeFragment : Fragment() {
     private var jList: ArrayList<JobModel> = ArrayList()
     private var nList: ArrayList<NGOModel> = ArrayList()
     private var bList: ArrayList<BlogModel> = ArrayList()
+    private var latLong: List<String> = java.util.ArrayList()
 
     //adapters
 
@@ -72,6 +78,29 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        //permission -------------------------------------------------------------------------------
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+                requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            //getting location -------------------------------------------------------------------------
+            val locationProvider = LocationProvider(context, true)
+            latLong = locationProvider.myLatLong()
+            storage.lat = latLong[0]
+            storage.long = latLong[1]
+        } else {
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ), 8000
+            )
+        }
 
         //layout setting
         setHorizontalList()
@@ -127,7 +156,15 @@ class HomeFragment : Fragment() {
 
             dBinding.sendSos.setOnClickListener {
                 dialog.dismiss()
-                sos()
+                if (storage.lat.isNotEmpty() && storage.long.isNotEmpty()) {
+                    sos()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Location Permission not provided",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
 
             dBinding.exploreBtn.setOnClickListener {
@@ -302,7 +339,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun sos() {
-//todo:sos
+        val sendIntent = Intent()
+        sendIntent.action = Intent.ACTION_SEND
+        sendIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            "https://www.google.com/maps?t=m&q=loc:${storage.lat},${storage.long}"
+        )
+        sendIntent.type = "text/plain"
+        sendIntent.setPackage("com.whatsapp")
+        startActivity(sendIntent)
     }
 
     private fun isValidEmail(target: CharSequence?): Boolean {
@@ -310,6 +355,34 @@ class HomeFragment : Fragment() {
             false
         } else {
             Patterns.EMAIL_ADDRESS.matcher(target).matches()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == 8000) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                //getting location -------------------------------------------------------------------------
+                val locationProvider = LocationProvider(context, true)
+                latLong = locationProvider.myLatLong()
+                storage.lat = latLong[0]
+                storage.long = latLong[1]
+            } else if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_DENIED || ContextCompat.checkSelfPermission(
+                    requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
+                ) == PackageManager.PERMISSION_DENIED
+            ) {
+
+            }
         }
     }
 }

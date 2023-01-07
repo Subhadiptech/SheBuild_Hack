@@ -36,4 +36,22 @@ public class Storage {
         edit.apply();
     }
 
+    public String getLat() {
+        return prefs.getString("lat", "");
+    }
+
+    public void setLat(String b) {
+        edit.putString("lat", b);
+        edit.apply();
+    }
+
+    public String getLong() {
+        return prefs.getString("long", "");
+    }
+
+    public void setLong(String b) {
+        edit.putString("long", b);
+        edit.apply();
+    }
+
 }
