@@ -2,11 +2,15 @@ package com.ersubhadip.presenter
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +30,7 @@ import com.ersubhadip.ww.databinding.StoriesSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -93,6 +98,40 @@ class HomeFragment : Fragment() {
                 show()
             }
 
+            dBinding.setEmergencyNumber.addTextChangedListener(object : TextWatcher {
+
+                override fun afterTextChanged(s: Editable) {
+                    if (s.toString().isNotEmpty() && s.toString().length == 10) {
+                        storage.number = s.toString()
+                        dBinding.setEmergencyNumber.visibility = View.GONE
+                        dBinding.sendSos.visibility = View.VISIBLE
+                    }
+                }
+
+                override fun beforeTextChanged(
+                    s: CharSequence, start: Int,
+                    count: Int, after: Int
+                ) {
+                }
+
+                override fun onTextChanged(
+                    s: CharSequence, start: Int,
+                    before: Int, count: Int
+                ) {
+
+                }
+            })
+
+            dBinding.sendSos.setOnClickListener {
+                dialog.dismiss()
+                sos()
+            }
+
+            dBinding.exploreBtn.setOnClickListener {
+                dialog.dismiss()
+                findNavController().navigate(R.id.action_homeFragment_to_policeFragment)
+            }
+
 
         }
 
@@ -123,6 +162,23 @@ class HomeFragment : Fragment() {
                     Toast.makeText(
                         requireContext(),
                         "Please fill all the fields",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            //subscribe
+            binding.subscribeBtn.setOnClickListener {
+                if (binding.subsEmail.text.isNotEmpty() && isValidEmail(binding.subsEmail.text)) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Subscribed",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Invalid email!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -208,5 +264,17 @@ class HomeFragment : Fragment() {
 
         sAdapter.submitList(sList)
 
+    }
+
+    private fun sos() {
+
+    }
+
+    fun isValidEmail(target: CharSequence?): Boolean {
+        return if (TextUtils.isEmpty(target)) {
+            false
+        } else {
+            Patterns.EMAIL_ADDRESS.matcher(target).matches()
+        }
     }
 }

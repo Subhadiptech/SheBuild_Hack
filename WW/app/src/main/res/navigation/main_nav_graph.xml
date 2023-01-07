@@ -29,10 +29,18 @@
         <action
             android:id="@+id/action_homeFragment_to_exploreFragment"
             app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_policeFragment"
+            app:destination="@id/policeFragment" />
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
         android:name="com.ersubhadip.presenter.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/policeFragment"
+        android:name="com.ersubhadip.presenter.PoliceFragment"
+        android:label="fragment_police"
+        tools:layout="@layout/fragment_police" />
 </navigation>
