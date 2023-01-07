@@ -79,6 +79,9 @@ class HomeFragment : Fragment() {
 
         //fetching data
         storyListData()
+        fetchNGOList()
+        fetchJobList()
+        fetchBlogList()
 
 
         //clicks
@@ -197,13 +200,14 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = nAdapter
         }
+
+        binding.jobsList.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            adapter = jAdapter
+        }
     }
 
     private fun setVerticalList() {
-        binding.jobsList.apply {
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            adapter = jAdapter
-        }
 
         binding.blogList.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -263,6 +267,38 @@ class HomeFragment : Fragment() {
 
         sAdapter.submitList(sList)
 
+    }
+
+    private fun fetchNGOList() {
+        nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
+        nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
+        nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
+        nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
+        nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
+        nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
+
+        nAdapter.submitList(nList)
+    }
+
+    private fun fetchJobList() {
+        jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
+        jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
+        jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
+        jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
+        jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
+        jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
+
+        jAdapter.submitList(jList)
+    }
+
+    private fun fetchBlogList() {
+        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
+        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
+        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
+        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
+        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
+
+        bAdapter.submitList(bList)
     }
 
     private fun sos() {

@@ -1,5 +1,7 @@
 package com.ersubhadip.presenter.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +53,9 @@ class JobAdapter @Inject constructor() :
 
             //intent to click read more
             link.setOnClickListener {
-                //todo:Redirect
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(item.knowMoreUrl)
+                itemView.context.startActivity(i)
             }
 
         }

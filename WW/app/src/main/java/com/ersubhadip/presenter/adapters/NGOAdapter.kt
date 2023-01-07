@@ -1,15 +1,19 @@
 package com.ersubhadip.presenter.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ersubhadip.domains.dto.adapterModels.NGOModel
 import com.ersubhadip.ww.R
 import javax.inject.Inject
+
 
 class NGOAdapter @Inject constructor() :
     ListAdapter<NGOModel, NGOAdapter.NGOViewHolder>(DiffUtilsCallback()) {
@@ -48,7 +52,9 @@ class NGOAdapter @Inject constructor() :
             desc.text = item.desc
             //intent to click read more
             link.setOnClickListener {
-                //todo:intent to read more browser
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(item.link)
+                itemView.context.startActivity(i)
             }
         }
     }

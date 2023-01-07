@@ -1,5 +1,7 @@
 package com.ersubhadip.presenter.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +54,9 @@ class ExploreAdapter @Inject constructor() :
 
             //intent to click read more
             apply.setOnClickListener {
-                //todo:Redirect
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(item.applyUrl)
+                itemView.context.startActivity(i)
             }
 
         }
