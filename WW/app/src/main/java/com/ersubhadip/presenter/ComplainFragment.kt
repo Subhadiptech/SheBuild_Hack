@@ -26,7 +26,6 @@ class ComplainFragment : Fragment() {
     ): View? {
         binding = FragmentComplainBinding.inflate(layoutInflater)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
