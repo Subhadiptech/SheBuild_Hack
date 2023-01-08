@@ -19,7 +19,7 @@ import javax.inject.Inject
 class ExploreFragment : Fragment() {
 
     @Inject
-    lateinit var adapter: ExploreAdapter
+    lateinit var ad: ExploreAdapter
 
     private var jList: ArrayList<ExploreModel> = ArrayList()
     private var sList: ArrayList<ExploreModel> = ArrayList()
@@ -45,6 +45,7 @@ class ExploreFragment : Fragment() {
         setVerticalList()
         fetchJobList()
         fetchScList()
+        manipulateList(jList)
 
         //custom click on tabs
         binding.tab1.setOnClickListener {
@@ -87,16 +88,17 @@ class ExploreFragment : Fragment() {
     private fun setVerticalList() {
         binding.jobsList.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            adapter = adapter
+            adapter = ad
         }
     }
 
 
     private fun manipulateList(list: ArrayList<ExploreModel>) {
-        adapter.submitList(list)
+        ad.submitList(list)
     }
 
     private fun fetchJobList() {
+        jList.clear()
         jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
         jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
         jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
@@ -106,11 +108,12 @@ class ExploreFragment : Fragment() {
     }
 
     private fun fetchScList() {
-        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
-        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
-        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
-        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
-        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
-        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        sList.clear()
+        sList.add(ExploreModel(1, "Scholarships 1", "Scholarships description 1", ""))
+        sList.add(ExploreModel(1, "Scholarships 1", "Scholarships description 1", ""))
+        sList.add(ExploreModel(1, "Scholarships 1", "Scholarships description 1", ""))
+        sList.add(ExploreModel(1, "Scholarships 1", "Scholarships description 1", ""))
+        sList.add(ExploreModel(1, "Scholarships 1", "Scholarships description 1", ""))
+        sList.add(ExploreModel(1, "Scholarships 1", "Scholarships description 1", ""))
     }
 }

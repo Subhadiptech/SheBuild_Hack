@@ -261,6 +261,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun storyListData() {
+        sList.clear()
         sList.add(
             StoryModel(
                 1,
@@ -315,6 +316,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchNGOList() {
+        nList.clear()
         nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
         nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
         nList.add(NGOModel(1, "NGO 1", "NGO 1 Description ...", ""))
@@ -326,6 +328,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchJobList() {
+        jList.clear()
         jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
         jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
         jList.add(JobModel(1, "Job 1", "Job 1 Description ...", ""))
@@ -337,11 +340,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchBlogList() {
+        bList.clear()
         bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
-        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
-        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
-        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
-        bList.add(BlogModel(1, "Blog 1", "Blog 1 Description ...", ""))
+        bList.add(BlogModel(1, "Blog 2", "Blog 2 Description ...", ""))
 
         bAdapter.submitList(bList)
     }
