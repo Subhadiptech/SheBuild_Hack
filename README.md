@@ -26,7 +26,8 @@
 ## Theme
 <h4>Women Empowerment</h4>
 <br><br>
-## Probelems ?
+## Problems ?
+
 - Lack of Motivation
 - Lack of awareness about women opportunity
 - Lack of women safety
@@ -35,7 +36,7 @@
 
 <br><br>
 
-## Solution ?
+## Solution 
 - Daily motivational success new of women and awareness Champaigns
 - SOS at every screen
 - NGO lists where they can join
