@@ -41,6 +41,11 @@ class ExploreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setVerticalList()
+        fetchJobList()
+        fetchScList()
+
         //custom click on tabs
         binding.tab1.setOnClickListener {
             binding.tab1.setBackgroundDrawable(
@@ -92,10 +97,20 @@ class ExploreFragment : Fragment() {
     }
 
     private fun fetchJobList() {
-
+        jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        jList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
     }
 
     private fun fetchScList() {
-
+        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
+        sList.add(ExploreModel(1, "Job 1", "Job description 1", ""))
     }
 }

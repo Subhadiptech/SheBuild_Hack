@@ -52,7 +52,6 @@ class HomeFragment : Fragment() {
     private var latLong: List<String> = java.util.ArrayList()
 
     //adapters
-
     @Inject
     lateinit var sAdapter: StoryAdapter
 
