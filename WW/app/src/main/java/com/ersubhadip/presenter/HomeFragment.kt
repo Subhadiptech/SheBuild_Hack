@@ -266,7 +266,7 @@ class HomeFragment : Fragment() {
             StoryModel(
                 1,
                 "Ann Cotton – Founder of Camfed",
-                "Ann Cotton was born in the Welsh city of Cardiff. Her educational career began in London where she founded an organization for girls who ...",
+                "Ann Cotton was born in the Welsh city of Cardiff ...",
                 listOf("Women", "Motivation"),
                 "https://ischoolconnect.com/blog/motivational-success-stories-of-women-you-need-to-read/"
             )
@@ -275,7 +275,7 @@ class HomeFragment : Fragment() {
             StoryModel(
                 2,
                 "Julia Gillard – Former Prime Minister of Australia",
-                "Julia Gillard was born in Wales but relocated to Australia when she was five years old. She started with an arts degree, ...",
+                "Julia Gillard was born in Wales but relocated  ...",
                 listOf("Women", "Education and Equality"),
                 "https://ischoolconnect.com/blog/motivational-success-stories-of-women-you-need-to-read/"
             )
@@ -284,7 +284,7 @@ class HomeFragment : Fragment() {
             StoryModel(
                 3,
                 "Graça Machel – Humanitarian",
-                "Graca was born in rural Mozambique as the youngest of six children. Young Graça had a lot of encouragement ...",
+                "Graca was born in rural Mozambique as  ...",
                 listOf("Women", "Empowerment"),
                 "https://ischoolconnect.com/blog/motivational-success-stories-of-women-you-need-to-read/"
             )
@@ -300,7 +300,7 @@ class HomeFragment : Fragment() {
             NGOModel(
                 1,
                 "UN Women",
-                "The United Nations Entity for Gender Equality and the Empowerment of Women (UN Women) is the UN agency dedicated to gender equality. ",
+                "The United Nations Entity for Gender Equality ... ",
                 "https://www.unwomen.org/en"
             )
         )
@@ -308,7 +308,7 @@ class HomeFragment : Fragment() {
             NGOModel(
                 2,
                 "Association for Women’s Rights in Development",
-                "The Association for Women’s Rights in Development (AWID) is an international organization working to achieve gender equality and women’s human rights across the word.",
+                "The Association for Women’s Rights in Development (AWID) is an international  ...",
                 "https://www.awid.org/"
             )
         )
@@ -316,7 +316,7 @@ class HomeFragment : Fragment() {
             NGOModel(
                 3,
                 "Women for Women International",
-                "Women for Women International is an international women’s rights organization that supports the most marginalized women in countries affected by war and conflict.",
+                "Women for Women International is an international women’s rights organization  ...",
                 "https://womenforwomen.org.uk/"
             )
         )
