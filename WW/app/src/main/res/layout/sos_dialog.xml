@@ -55,6 +55,8 @@
                 android:background="@drawable/sos_edittext"
                 android:fontFamily="@font/source_sans_pro"
                 android:hint="Enter Emergency Contact"
+                android:inputType="phone"
+                android:maxLength="10"
                 android:paddingHorizontal="6dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"

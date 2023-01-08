@@ -36,6 +36,7 @@ import com.ersubhadip.ww.databinding.SosDialogBinding
 import com.ersubhadip.ww.databinding.StoriesSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
+import java.net.URLEncoder
 import javax.inject.Inject
 
 
@@ -153,6 +154,13 @@ class HomeFragment : Fragment() {
 
                 }
             })
+
+            dBinding.sendSos.setOnLongClickListener {
+                storage.number = ""
+                dBinding.sendSos.visibility = View.GONE
+                dBinding.setEmergencyNumber.visibility = View.VISIBLE
+                true
+            }
 
             dBinding.sendSos.setOnClickListener {
                 dialog.dismiss()
@@ -340,24 +348,31 @@ class HomeFragment : Fragment() {
 
     @SuppressLint("QueryPermissionsNeeded")
     private fun sos() {
-        val sendIntent = Intent()
-        sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(
-            Intent.EXTRA_TEXT,
-            "https://www.google.com/maps?t=m&q=loc:${storage.lat},${storage.long}"
-        )
-        sendIntent.type = "text/plain"
-        sendIntent.setPackage("com.whatsapp")
-        sendIntent.putExtra("jid", "${storage.number}@s.whatsapp.net")
-        // Verify that the Intent will resolve to an activity
-        if (sendIntent.resolveActivity(requireActivity().packageManager) != null) {
-            startActivity(sendIntent);
+        Toast.makeText(
+            requireContext(),
+            "Message sent to ${storage.number}",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        try {
+            val packageManager = requireContext().packageManager
+            val i = Intent(Intent.ACTION_VIEW)
+            val url =
+                "https://wa.me/91${storage.number}" + "?text=" + URLEncoder.encode(
+                    "https://www.google.com/maps?t=m&q=loc:${storage.lat},${storage.long}",
+                    "utf-8"
+                )
+            i.setPackage("com.whatsapp")
+            i.data = Uri.parse(url)
+            requireContext().startActivity(i)
+
+        } catch (e: Exception) {
+            Toast.makeText(
+                requireContext(),
+                "Whatsapp not found!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
-
-        val callIntent = Intent(Intent.ACTION_CALL)
-        callIntent.data = Uri.parse("tel:1234567890")
-        startActivity(callIntent)
-
     }
 
     private fun isValidEmail(target: CharSequence?): Boolean {
