@@ -1,5 +1,7 @@
 package com.ersubhadip.presenter.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +51,12 @@ class StoryAdapter @Inject constructor() :
             desc.text = item.storyDesc
             tag1.text = item.storyTags[0]
             tag2.text = item.storyTags[1]
+
+            itemView.setOnClickListener {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(item.url)
+                itemView.context.startActivity(i)
+            }
 
         }
     }

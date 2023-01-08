@@ -5,4 +5,5 @@ data class StoryModel(
     val storyTitle: String,
     val storyDesc: String,
     val storyTags: List<String>,
+    val url: String
 )
