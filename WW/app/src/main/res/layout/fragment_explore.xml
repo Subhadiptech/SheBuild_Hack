@@ -73,4 +73,16 @@
         tools:listitem="@layout/explore_item_layout" />
 
 
+    <ImageView
+        android:id="@+id/sosBtn"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:elevation="4dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_sos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
